@@ -26,9 +26,13 @@ namespace Sharpsaver.Views
             // Set the preview window as the parent of this window
             InteropHelper.SetParent(windowHandle, previewHandle);
 
+            // Make this window a tool window while preview.
+            // A tool window does not appear in the taskbar or in the dialog that appears when the user presses ALT+TAB.
+            // GWL_EXSTYLE = -20, WS_EX_TOOLWINDOW = 0x00000080L
+            InteropHelper.SetWindowLong(windowHandle, -20, 0x00000080L);
             // Make this a child window so it will close when the parent dialog closes
             // GWL_STYLE = -16, WS_CHILD = 0x40000000
-            InteropHelper.SetWindowLong(windowHandle, -16, 0x40000000);
+            InteropHelper.SetWindowLong(windowHandle, -16, 0x40000000L);
 
             // Place the window inside the parent
             InteropHelper.GetClientRect(previewHandle, out Rect parentRect);
