@@ -1,0 +1,32 @@
+﻿<Window x:Class="Sharpsaver.Views.ScreensaverView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sharpsaver.Views"
+        mc:Ignorable="d"        
+        Top="0" Left="0" WindowState="Maximized" WindowStyle="None" WindowStartupLocation="Manual" ShowInTaskbar="False" ResizeMode="NoResize" AllowsTransparency="False"
+
+        Title="Screensaver" 
+        Background="DimGray"
+        MouseMove="Window_MouseMove" 
+        MouseDown="Window_MouseDown"
+        KeyDown="Window_KeyDown">
+    <Viewbox Stretch="Fill">
+        <Canvas Width="400" Height="300">
+            <Rectangle Width="200"
+                   Height="100"
+                   Fill="LightSteelBlue"
+                   Canvas.Left="50"
+                   Canvas.Top="100" />
+            <Ellipse Width="100"
+                 Height="200"
+                 Fill="DarkCyan"
+                 Stroke="White" 
+                 StrokeThickness="5"
+                 Panel.ZIndex="1"
+                 Canvas.Left="100"
+                 Canvas.Top="50"/>
+        </Canvas>
+    </Viewbox>
+</Window>
