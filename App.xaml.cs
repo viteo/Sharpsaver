@@ -1,13 +1,6 @@
 ﻿using Sharpsaver.Views;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
-using System.Windows.Media;
 
 namespace Sharpsaver
 {
@@ -18,7 +11,13 @@ namespace Sharpsaver
         {
             base.OnStartup(args);
 
-            if (args.Args.Length == 0 || args.Args[0].ToLower().StartsWith("/s"))
+            if (args.Args.Length == 0 || args.Args[0].ToLower().StartsWith("/c"))
+            {
+                //Show the configuration settings dialog box.
+                var settingsWindow = new SettingsView();
+                settingsWindow.Show();
+            }
+            else if (args.Args[0].ToLower().StartsWith("/s"))
             {
                 //Start the screensaver in full-screen mode.
                 var screensaverWindow = new ScreensaverView();
@@ -31,12 +30,7 @@ namespace Sharpsaver
                 var previewWindow = new ScreensaverView(previewHwnd);
                 previewWindow.Show();
             }
-            else if (args.Args[0].ToLower().StartsWith("/c"))
-            {
-                //Show the configuration settings dialog box.
-                var settingsWindow = new SettingsView();
-                settingsWindow.Show();
-            }
+
         }
     }
 }
