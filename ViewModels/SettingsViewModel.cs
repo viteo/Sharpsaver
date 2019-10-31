@@ -1,4 +1,5 @@
 ﻿using Sharpsaver.Models;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,7 +15,7 @@ namespace Sharpsaver.ViewModels
             set
             {
                 settings.param1 = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Parameter1");
             }
                 
         }
@@ -25,7 +26,7 @@ namespace Sharpsaver.ViewModels
             set
             {
                 settings.param2 = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Parameter2");
             }
         }
 
@@ -35,7 +36,7 @@ namespace Sharpsaver.ViewModels
             set
             {
                 settings.param3 = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Parameter3");
             }
         }
 
@@ -45,7 +46,7 @@ namespace Sharpsaver.ViewModels
             set
             {
                 settings.param4 = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Parameter4");
             }
         }
 
@@ -57,10 +58,10 @@ namespace Sharpsaver.ViewModels
 
         public ICommand SaveCommand
         {
-            get { return new DelegateCommand(Save); }
+            get { return new DelegateCommand(new Action<object>(Save)); }
         }
 
-        public void Save()
+        public void Save(object obj)
         {
             settings.SaveSettings();
             Application.Current.Shutdown();

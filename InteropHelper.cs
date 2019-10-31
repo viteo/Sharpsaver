@@ -41,6 +41,6 @@ namespace Sharpsaver
         internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
         [DllImport("user32.dll")]
-        internal static extern bool GetClientRect(IntPtr hWnd, out Rect lpRect);
+        internal static extern bool GetClientRect(IntPtr hWnd, ref Rect lpRect);
     }      
 }

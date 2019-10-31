@@ -28,7 +28,9 @@ namespace Sharpsaver
                 //Display a preview of the screensaver using the specified window handle.
                 IntPtr previewHwnd = new IntPtr(Convert.ToInt32(args.Args[1]));
                 var previewWindow = new ScreensaverView(previewHwnd);
+#if !NET30 && !NET35
                 previewWindow.Show();
+#endif
             }
 
         }
