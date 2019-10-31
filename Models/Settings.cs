@@ -31,6 +31,8 @@ namespace Sharpsaver.Models
         private readonly string settingsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
             "\\sharpsaver.xml";
 
+        public static Settings Instance;
+
         public Param1 param1 { get; set; }
         public Param2 param2 { get; set; }
         public int param3 { get; set; }
@@ -69,10 +71,7 @@ namespace Sharpsaver.Models
                         // Assign the deserialized object to the new settings object
                         settings = ((Settings)serializer.Deserialize(xmlReader));
 
-                        this.param1 = settings.param1;
-                        this.param2 = settings.param2;
-                        this.param3 = settings.param3;
-                        this.param4 = settings.param4;
+                        Instance = settings;
                     }
 
                     // Close the XmlTextReader
@@ -98,7 +97,7 @@ namespace Sharpsaver.Models
                 TextWriter textWriter = new StreamWriter(this.settingsPath, false);
 
                 // Serialize the settings object
-                serializer.Serialize(textWriter, this);
+                serializer.Serialize(textWriter, Instance);
 
                 // Close the TextWriter
                 textWriter.Close();
